@@ -7,11 +7,10 @@ use nova_snark::{
   },
   CompressedSNARK, PublicParams, RecursiveSNARK,
 };
-
 use bellpepper_core::{
   num::AllocatedNum, ConstraintSystem, SynthesisError
 };
-
+use bincode;
 use flate2::{write::ZlibEncoder, Compression};
 
 type E1 = Bn256EngineKZG;
@@ -231,6 +230,7 @@ fn main() {
     let compressed_snark = res.unwrap();
 
     let mut encoder = ZlibEncoder::new(Vec::new(), Compression::default());
+    bincode::serialize_into(&mut encoder, &compressed_snark).unwrap();
   
     let compressed_snark_encoded = encoder.finish().unwrap();
     println!(
