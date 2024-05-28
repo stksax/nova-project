@@ -1,3 +1,4 @@
+#![allow(dead_code, unused_imports)]
 use nova_snark::{
   provider::{Bn256EngineKZG, GrumpkinEngine},
   traits::{
@@ -140,7 +141,11 @@ impl<G: Group> StepCircuit<G::Scalar> for FibonacciCircuit<G> {
     
 }
 
-fn main() {
+#[cfg(test)]
+mod tests{
+  use super::*;
+  #[test]
+fn fibonacci() {
   println!("Nova-based VDF with Fibonacci");
   println!("=========================================================");
   type Cruve = halo2curves::bn256::G1;
@@ -251,4 +256,5 @@ fn main() {
     );
     assert!(res.is_ok());
     println!("=========================================================");
+}
 }
