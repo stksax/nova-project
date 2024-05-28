@@ -13,13 +13,16 @@ the struct from 4 and 7 for example:
 ````11 18````
 
 # Elliptic Curve point addition and Fibonacci
-the struct from 4 and 7 for example:
+jacobian coordinates addition:
 ````
-   A = X1 Z22  
-   B = X2 Z12 - A  
-   c = Y1 Z23
-   d = Y2 Z13 - c
-   Z3 = Z1 Z2 B
-   X3 = d2 - B2 (B + 2 A)
-   Y3 = d (A B2  - X3) - c B3  ````
+   point1 = (x1,y1,z1)
+   point2 = (x2,y2,z2)
+   point1 + point2 = point3
+   A = X1 * Z2²  
+   B = X2 * Z1² - A  
+   c = Y1 * Z2³
+   d = Y2 * Z1³ - c
+   Z3 = Z1 * Z2 * B
+   X3 = d2 - B²*(B + 2 A)
+   Y3 = d (A*B²  - X3) - c*B³  
 
